@@ -1,34 +1,40 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { SignupDto } from './dto/signup.dto';
+import { User } from './models/users.model';
+import { SigninDto } from './dto/signin.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  @Post('signup')
+  @HttpCode(HttpStatus.CREATED)
+  public async signup(@Body() signupDto: SignupDto): Promise<User> {
+    return this.usersService.signup(signupDto);
+  }
+
+  @Post('signin')
+  @HttpCode(HttpStatus.OK)
+  public async signin(
+    @Body() signinDto: SigninDto,
+  ): Promise<{ name: string; jwtToken: string; email: string }> {
+    return this.usersService.signin(signinDto);
   }
 
   @Get()
-  findAll() {
+  @UseGuards(AuthGuard('jwt'))
+  @HttpCode(HttpStatus.OK)
+  public async findAll(): Promise<User[]> {
     return this.usersService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
   }
 }
