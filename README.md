@@ -45,7 +45,7 @@ This project as developed with purpose to use for all my projects template :D.
 
 ## 📝 License
 
-This project use a <a href="./LLICENSE"> MIT </a> License
+This project use a <a href="./LICENSE"> MIT </a> License
 
 ## :atom_symbol: Follow me!
 
