@@ -13,7 +13,7 @@
   <a href="#atom_symbol-follow-me">Follow Me!</a>
 </p>
 
-![code](https://user-images.githubusercontent.com/50564121/165831405-d4044a48-d94e-4408-9d05-11d80c584fa2.png)
+![code](https://user-images.githubusercontent.com/50564121/168153856-eaa39dce-a789-439a-88eb-9aac04e395a4.png)
 
 ## ⚒️ Tecnologies
 
