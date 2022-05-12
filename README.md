@@ -1,6 +1,6 @@
 # App Users Nest.JS
 
-> Application using Nest.js and Prisma
+> Application using Nest.js and Mongoose
 
 ### 💻 Nest.JS 8.2.5
 
